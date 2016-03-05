@@ -9,8 +9,10 @@ using std::string;
 using std::vector;
 using std::stringstream;
 
-Usuario::Usuario(string nombre, string contrasena, vector <int> juegos):
-	nombre(nombre), contrasena(contrasena), juegos(juegos){}
+Usuario::Usuario(string nombre, string contrasena):
+	nombre(nombre), contrasena(contrasena){
+		vector<int> juegos;
+	}
 
 
 string Usuario::toString()const{
@@ -23,7 +25,15 @@ string Usuario::toString()const{
 }
 
 bool Usuario::agregarJuego(int ids){//metodo recorre el vector de juegos  
-	bool condicion = true;
+	bool condicion = false;
+	for(int i =0 ; i< juegos.size(); i++){
+		if(juegos[i] == ids){
+			condicion = true;
+		}
+	}
+	if(condicion){
+		juegos.push_back(ids);
+	}
 	return condicion;
 } 
 
@@ -38,6 +48,10 @@ void Usuario::cambiarContrasena(string contrasena){
 
 string Usuario::getNombre(){
 	return nombre;
+}
+
+string Usuario::getContrasena(){
+	return contrasena;
 }
 
 bool Usuario::contrasenaValida(string nombre, string contrasena){

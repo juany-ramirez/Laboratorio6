@@ -1,7 +1,7 @@
 redsocial:	juego.o usuario.o main.o
 	g++ juego.o usuario.o main.o -o redsocial
 
-main.o:	main.cpp point.h
+main.o:	main.cpp juego.h usuario.h
 	g++ -c main.cpp
 
 juego.o: 	juego.cpp juego.h
